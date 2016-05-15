@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Topgate, Inc. GAE development standards</title>
+	<!--<base href="/">-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+
+	<!-- bower:css -->
+	<!-- endbower -->
+	<link href="/stylesheets/main.css" type="text/css">
+
+	<!-- bower:js -->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/es5-shim/es5-shim.js"></script>
+	<script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    
+	<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+	<script src="bower_components/jQuery/dist/jquery.js"></script>
+	
+	
+	
+	<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+	<!-- endbower -->
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	
+	<script type="text/javascript" src="/scripts/index.js" charset="utf-8"></script>
+</head>
+<body>
+
+
+<!--<ul>
+  <li><a ui-sref="main">メインページ</a></li>
+  <li><a ui-sref="articles({id:100})">記事 No.100</a></li>
+  <li><a ui-sref="articles({id:108})">記事 No.108</a></li>
+  <li><a ui-sref="search({keyword:'Angular/Karma/Bower'})">
+    「Angular／Karma／Bower」の検索</a></li>
+</ul>-->
+<a ui-sref="main">メインページ</a>
+<a ui-sref="articles">記事 No.100</a>
+<a ui-sref="sample">Sample</a>
+<div ui-view></div>
+
+
+
+</body>
+</html>

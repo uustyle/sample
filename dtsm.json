@@ -1,0 +1,35 @@
+{
+  "repos": [
+    {
+      "url": "https://github.com/borisyankov/DefinitelyTyped.git",
+      "ref": "master"
+    }
+  ],
+  "path": "typings",
+  "bundle": "typings/bundle.d.ts",
+  "dependencies": {
+    "angularjs/angular.d.ts": {
+      "ref": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "angularjs/angular-route.d.ts": {
+      "ref": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "mocha/mocha.d.ts": {
+      "ref": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "power-assert/power-assert.d.ts": {
+      "ref": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "ref": "0dd29bf8253536ae24e61c109524e924ea510046"
+    },
+    "ng-file-upload/ng-file-upload.d.ts": {
+      "ref": "1ec3d510e0c4d7c50e708ca7cb0765c7e06fa2ed"
+    }
+  },
+  "link": {
+    "npm": {
+      "include": true
+    }
+  }
+}
