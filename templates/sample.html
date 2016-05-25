@@ -2,7 +2,13 @@
 sample<br>
 {{name}}
 
-
+  <button ngf-select="c.fileSelect($files)" ngf-multiple="true"
+    ngf-accept="'.jpg,.png,.gif'">ファイルを選択</button>
 <input type="file" ngf-select="c.fileSelect($files)">
+
+<button ng-click="c.filedownload()">ファイルをdownload</button>
+
+<button ng-click="c.testHttpGet()">HttpGet</button>
+
 </div>
 

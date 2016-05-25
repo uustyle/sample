@@ -18,10 +18,10 @@ namespace app.hello {
 
     export class SampleController {
 
-static $inject = ["Upload"];
+        static $inject = ["Upload","sampleService"];
         constructor(private Upload: angular.angularFileUpload.IUploadService, public $scope: TestScope, private customers, private sampleService: SampleService) {
 
-            console.log("upload", Upload);
+            console.log("upload", Upload,sampleService);
 
             // let test: Test = new Test();
 
@@ -47,28 +47,48 @@ static $inject = ["Upload"];
         }
 
 
+       testHttpGet() {
+
+console.log("testHttpGet",this.sampleService);
+            this.sampleService.test2();
+
+        }
+
+
+
+        filedownload() {
+
+            location.href = "http://localhost:8080/SpringKenshu/download";
+
+        }
+
+
         fileSelect(files: Array<File>) {
 
-alert("fileSelect");
+            // alert("fileSelect");
+
+            if (files.length <= 0) {
+                return;
+            }
 
 
-		this.Upload.setDefaults({
-			ngfAccept: "*.csv",
-			ngfAllowDir: true,
-			ngfEnableFirefoxPaste: true,
-			ngfHideOnDropNotAvailable: true,
-			ngfMaxDuration: 20,
-			ngfMaxFiles: 10,
-			ngfMaxSize: "10MB",
-			ngfMaxTotalSize: "10MB",
-			ngfMinDuration: "10s",
-			ngfMinRatio: "8:10,1.6",
-			ngfMinSize: "1MB",
-			ngfMultiple: false,
-			ngfRatio: "8:10,1.6",
-			ngfStopPropagation: true,
-			ngfValidateForce: true
-		});
+            // this.Upload.setDefaults({
+            // 	ngfAccept: "*.csv",
+            // 	ngfAllowDir: true,
+            // 	ngfEnableFirefoxPaste: true,
+            // 	ngfHideOnDropNotAvailable: true,
+            // 	ngfMaxDuration: 20,
+            // 	ngfMaxFiles: 10,
+            // 	ngfMaxSize: "10MB",
+            // 	ngfMaxTotalSize: "10MB",
+            // 	ngfMinDuration: "10s",
+            // 	ngfMinRatio: "8:10,1.6",
+            // 	ngfMinSize: "1MB",
+            // 	ngfMultiple: false,
+            // 	ngfRatio: "8:10,1.6",
+            // 	ngfStopPropagation: true,
+            // 	ngfValidateForce: true
+            // });
 
 
 
@@ -77,18 +97,21 @@ alert("fileSelect");
                     url: "http://localhost:8080/SpringKenshu/upload",
                     method: "POST",
                     data: {
-                        file: files[0],
-                        extraData: {
-                            test: true
-                        }
+                        file: files[0]
+                        // extraData: {
+                        //     test: true
+                        // }
                     }
-                    }).abort().xhr((evt: any) => {
-                    	console.log("xhr");
-                    }).progress((evt: angular.angularFileUpload.IFileProgressEvent) => {
-                    	let percent = parseInt((100.0 * evt.loaded / evt.total).toString(), 10);
-                    	console.log("upload progress: " + percent + "% for " + evt.config.data.media[0]);
-                    }).error((data: any, status: number, response: any, headers: any) => {
-                    	console.error(data, status, response, headers);
+                    // }).abort().xhr((evt: any) => {
+                    //     console.log("xhr");
+                    // }).progress((evt: angular.angularFileUpload.IFileProgressEvent) => {
+                    //     let percent = parseInt((100.0 * evt.loaded / evt.total).toString(), 10);
+                    //     console.log("upload progress: " + percent + "% for " + evt.config.data.media[0]);
+                }).error((data: any, status: number, response: any, headers: any) => {
+
+                    console.log("error!", data, status, headers);
+
+                    // console.error(data, status, response, headers);
                 }).success((data: any, status: number, headers: any, config: angular.angularFileUpload.IFileUploadConfigFile) => {
                     // file is uploaded successfully
                     console.log("Success!", data, status, headers, config);

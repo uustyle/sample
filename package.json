@@ -23,6 +23,7 @@
     "grunt-exec": "^0.4.6",
     "grunt-karma": "^0.12.1",
     "grunt-open": "^0.2.3",
+    "grunt-protractor-runner": "^3.2.0",
     "grunt-ts": "^5.1.0",
     "grunt-tslint": "^2.5.0",
     "grunt-typedoc": "^0.2.3",
@@ -37,6 +38,7 @@
     "load-grunt-tasks": "^3.3.0",
     "mocha": "^2.3.3",
     "phantomjs": "^1.9.18",
+    "protractor": "^3.3.0",
     "time-grunt": "^1.2.2",
     "tslint": "^2.5.1",
     "typescript": "^1.6.2"

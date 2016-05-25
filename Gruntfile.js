@@ -171,7 +171,24 @@ module.exports = function (grunt) {
 					keepalive: true
 				}
 			}
-		}
+		},
+        
+        protractor: {
+            options: {
+                configFile: 'node_modules/protractor/referenceConf.js', // Default config file
+                keepAlive: false,
+                noColor: false,
+                args: {}
+            },
+            E2E_local: {
+                options: {
+                    configFile: 'referenceConf.js',
+                    args: {}
+                }
+            }
+        }        
+        
+        
 	});
 
 	grunt.registerTask('setup', ['clean', 'bower', 'dtsm', 'wiredep']);

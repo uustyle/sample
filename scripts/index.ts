@@ -6,6 +6,9 @@
 ///<reference path='./hello/index.ts' />
 ///<reference path='./hello/SampleController.ts' />
 
+///<reference path='./hello/SampleService.ts' />
+
+
 namespace app {
 	"use strict";
 
@@ -44,7 +47,7 @@ namespace app {
 				})
 				.state('sample', {
 					url: '/sample',
-
+                    
 					resolve: {
 						customers: function() {
 							return ['Alice', 'Bob'];
@@ -52,7 +55,8 @@ namespace app {
 					},
 					controller: 'SampleController',
 					controllerAs: 'c',
-					templateUrl: 'templates/sample.html'
+					templateUrl: 'templates/sample.html',
+                    isLoginRequired: true
 				})	  
 			//   .state('app.customer', {
 			//     url: 'customer',
@@ -67,6 +71,33 @@ namespace app {
 
 
 		})
+        
+        .run(['$rootScope', '$state', function($rootScope, $state) {
+
+
+            $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+
+console.log("$stateChangeStart", toState.isLoginRequired);   
+console.log("toState",toState); 
+console.log("$state",$state); 
+
+                
+
+                if (toState.isLoginRequired) {
+                    
+console.log(toState.isLoginRequired);                    
+                    
+                    // if (!UserService.isLoggedIn()) {
+                    //     $state.go('login');
+                    //     e.preventDefault();
+                    // }
+                }
+            });
+
+
+
+
+        }])       
 		.run(function($httpBackend) {
 
 			var sample = [
