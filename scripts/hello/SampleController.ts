@@ -49,8 +49,11 @@ namespace app.hello {
 
        testHttpGet() {
 
-console.log("testHttpGet",this.sampleService);
-            this.sampleService.test2();
+// console.log("testHttpGet",this.sampleService);
+//             this.sampleService.test2();
+
+
+
 
         }
 

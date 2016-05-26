@@ -33,7 +33,7 @@ namespace app {
 
 
 
-	angular.module('app', ['ui.router', 'ngMockE2E', 'ngFileUpload'])
+	angular.module('app', ['ui.router', 'ngMockE2E', 'ngFileUpload', 'ngCookies'])
 	// angular.module('app', ['ui.router'])
 		.config(function($stateProvider, $urlRouterProvider) {
 			$stateProvider
@@ -72,11 +72,25 @@ namespace app {
 
 		})
         
-        .run(['$rootScope', '$state', function($rootScope, $state) {
+        .run(['$rootScope', '$state', '$cookies', '$http', function($rootScope, $state, $cookies, $http) {
+
+            $http.get("http://localhost:8080/SpringKenshu/api/json2/")
+                .success(function(data, status, headers, config) {
+                    console.log("test2", data);
+console.log("JSESSIONID",$cookies.getObject("JSESSIONID"));
+console.log("JSESSIONID",document.cookie);                    
+                })
+                .error(function(data, status, headers, config) {
+                    console.log("test2", data);
+                });
 
 
             $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
 
+console.log("JSESSIONID",$cookies.get("JSESSIONID"));
+console.log("JSESSIONID",document.cookie);
+
+console.log("$cookies",$cookies);
 console.log("$stateChangeStart", toState.isLoginRequired);   
 console.log("toState",toState); 
 console.log("$state",$state); 
