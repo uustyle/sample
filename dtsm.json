@@ -25,6 +25,9 @@
     },
     "ng-file-upload/ng-file-upload.d.ts": {
       "ref": "1ec3d510e0c4d7c50e708ca7cb0765c7e06fa2ed"
+    },
+    "angular-loading-bar/angular-loading-bar.d.ts": {
+      "ref": "b66d6115d7a8cd74af45e59d36c4447e5d1e9a52"
     }
   },
   "link": {

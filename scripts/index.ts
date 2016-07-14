@@ -2,7 +2,7 @@
 ///<reference path='../typings/angularjs/angular-mocks.d.ts' />
 ///<reference path='../typings/angularjs/angular-route.d.ts' />
 ///<reference path='../typings/ng-file-upload/ng-file-upload.d.ts' />
-
+///<reference path='../typings/angular-loading-bar/angular-loading-bar.d.ts' />
 ///<reference path='./hello/index.ts' />
 ///<reference path='./hello/SampleController.ts' />
 
@@ -33,9 +33,12 @@ namespace app {
 
 
 
-	angular.module('app', ['ui.router', 'ngMockE2E', 'ngFileUpload', 'ngCookies'])
+	angular.module('app', ['ui.router', 'ngMockE2E', 'ngFileUpload', 'ngCookies','cfp.loadingBar'])
 	// angular.module('app', ['ui.router'])
-		.config(function($stateProvider, $urlRouterProvider) {
+		.config(function($stateProvider, $urlRouterProvider,cfpLoadingBarProvider) {
+			
+			 console.log("cfpLoadingBarProvider",cfpLoadingBarProvider);
+			
 			$stateProvider
 				.state('app', {
 					url: '/',
@@ -47,16 +50,24 @@ namespace app {
 				})
 				.state('sample', {
 					url: '/sample',
-                    
 					resolve: {
 						customers: function() {
+							console.log("resolve");
 							return ['Alice', 'Bob'];
 						}
 					},
+					
+  onEnter: function(customers){
+console.log("onEnter",customers);
+  },					
+					
 					controller: 'SampleController',
 					controllerAs: 'c',
 					templateUrl: 'templates/sample.html',
-                    isLoginRequired: true
+                    isLoginRequired: true,
+					
+					
+					
 				})	  
 			//   .state('app.customer', {
 			//     url: 'customer',
@@ -69,10 +80,17 @@ namespace app {
 			;
 			$urlRouterProvider.otherwise('/');
 
+ 			// cfpLoadingBarProvider.includeSpinner = false;
+        	// cfpLoadingBarProvider.latencyThreshold = 0;
 
 		})
         
-        .run(['$rootScope', '$state', '$cookies', '$http', function($rootScope, $state, $cookies, $http) {
+        .run(['$rootScope', '$state', '$cookies', '$http', function($rootScope, $state, $cookies, $http,cfpLoadingBar) {
+
+
+console.log("cfpLoadingBar",cfpLoadingBar);
+
+/*
 
             $http.get("http://localhost:8080/SpringKenshu/api/json2/")
                 .success(function(data, status, headers, config) {
@@ -101,14 +119,10 @@ console.log("$state",$state);
                     
 console.log(toState.isLoginRequired);                    
                     
-                    // if (!UserService.isLoggedIn()) {
-                    //     $state.go('login');
-                    //     e.preventDefault();
-                    // }
                 }
             });
 
-
+*/
 
 
         }])       

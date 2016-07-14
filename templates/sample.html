@@ -10,5 +10,17 @@ sample<br>
 
 <button ng-click="c.testHttpGet()">HttpGet</button>
 
+<button ng-click="c.test()">test</button>
+<button ng-click="c.test1()">test1</button>
+
+
+<ng-form name="c.userForm" novalidate>
+      <input type="text" ng-model="filterValue" />
+      <input type="text" ng-show="true" ng-model="dirtytest">
+      
+<div ng-show="c.userForm.$dirty">
+dirty
+</div>
+</form>  
 </div>
 

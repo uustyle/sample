@@ -9,6 +9,8 @@ namespace app.hello {
         name?: string;
         temp?: string;
         fileSelect(files: angular.angularFileUpload.IUploadService): void;
+//        $$childTail: any;
+        // userForm: any;
     }
 
     class Test {
@@ -18,10 +20,21 @@ namespace app.hello {
 
     export class SampleController {
 
-        static $inject = ["Upload","sampleService"];
-        constructor(private Upload: angular.angularFileUpload.IUploadService, public $scope: TestScope, private customers, private sampleService: SampleService) {
+        static $inject = ["Upload","sampleService","cfpLoadingBar"];
+        private userForm: any;
+
+        constructor(private Upload: angular.angularFileUpload.IUploadService, 
+        public $scope: TestScope, private customers, private sampleService: SampleService,
+        private $timeout, private cfpLoadingBar
+        ) {
+
+alert("1");
+            console.log("cfpLoadingBar", cfpLoadingBar);
 
             console.log("upload", Upload,sampleService);
+
+            console.log("scope", this.userForm);
+
 
             // let test: Test = new Test();
 
@@ -52,6 +65,31 @@ namespace app.hello {
 // console.log("testHttpGet",this.sampleService);
 //             this.sampleService.test2();
 
+
+
+
+        }
+
+
+        test() {
+
+            // console.log("scope", this.userForm);
+
+     this.cfpLoadingBar.start();
+     this.$timeout(function() {
+       /* 任意の非同期処理 */
+       this.cfpLoadingBar.complete();
+     }, 1000)
+
+
+        }
+
+
+        test1() {
+
+            console.log("scope", this.userForm);
+
+this.userForm.$setPristine();
 
 
 
